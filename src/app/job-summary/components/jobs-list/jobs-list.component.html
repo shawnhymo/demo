@@ -1,0 +1,39 @@
+<section class="jobs-list">
+  <header class="jobs-list__header">
+    <h1>Job Summary</h1>
+
+    <app-job-filter-bar
+      [regions]="stateService.availableRegions()"
+      [statuses]="stateService.availableStatuses()"
+      [selectedRegion]="stateService.selectedRegion()"
+      [selectedStatus]="stateService.selectedStatus()"
+      (regionChanged)="stateService.updateRegion($event)"
+      (statusChanged)="stateService.updateStatus($event)"
+      (filtersCleared)="stateService.resetFilters()"
+    />
+  </header>
+
+  <section class="jobs-list__content">
+    @if (stateService.loading()) {
+      <p>Loading jobs...</p>
+    } @else if (stateService.error()) {
+      <div class="jobs-list__error">
+        <p>{{ stateService.error() }}</p>
+        <button type="button" (click)="stateService.retryLoad()">
+          Retry
+        </button>
+      </div>
+    } @else if (stateService.filteredJobs().length === 0) {
+      <p>No jobs found.</p>
+    } @else {
+      <div class="jobs-list__grid">
+        @for (job of stateService.filteredJobs(); track job.jobId) {
+          <app-job-card
+            [job]="job"
+            (viewDetails)="openDetails($event)"
+          />
+        }
+      </div>
+    }
+  </section>
+</section>

@@ -1,0 +1,44 @@
+<!-- <div class="job-detail">
+  <a class="job-detail__back" routerLink="/jobs">← Back to Jobs</a>
+
+  TODO: Loading state -->
+  <!-- TODO: Error state — show message (service error or not-found) -->
+  <!-- TODO: Job detail card with all fields and progress bar -->
+<!-- </div> --> 
+
+<div class="job-detail">
+  <a class="job-detail__back" routerLink="/jobs">← Back to Jobs</a>
+
+  @if (stateService.jobDetailLoading()) {
+    <p>Loading job...</p>
+  } @else if (stateService.jobDetailError()) {
+    <div class="job-detail__error">
+      <p>{{ stateService.jobDetailError() }}</p>
+      <button type="button" (click)="retry()">Retry</button>
+    </div>
+  } @else if (!stateService.jobDetail()) {
+    <div class="job-detail__error">
+      <p>Job not found.</p>
+    </div>
+  } @else {
+    @let job = stateService.jobDetail();
+
+    <section class="job-detail__card">
+      <h1>{{ job!.padName }}</h1>
+
+      <p><strong>Job ID:</strong> {{ job!.jobId }}</p>
+      <p><strong>Status:</strong> {{ job!.statusName }}</p>
+      <p><strong>Region:</strong> {{ job!.regionName }}</p>
+      <p><strong>Plan Start Date:</strong> {{ job!.planStartDate }}</p>
+      <p><strong>Days Planned:</strong> {{ job!.daysPlanned }}</p>
+      <p><strong>Percent Complete:</strong> {{ job!.percentComplete }}%</p>
+
+      <div class="job-detail__progress">
+        <div
+          class="job-detail__progress-bar"
+          [style.width.%]="job!.percentComplete"
+        ></div>
+      </div>
+    </section>
+  }
+</div>

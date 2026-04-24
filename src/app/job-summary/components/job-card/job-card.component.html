@@ -1,0 +1,44 @@
+<article class="job-card">
+  <div class="job-card__top">
+    <div>
+      <h2>{{ job().padName }}</h2>
+      <p>{{ job().regionName }}</p>
+    </div>
+
+    <span [class]="job().statusName | statusBadge">
+      {{ job().statusName }}
+    </span>
+  </div>
+
+  <div class="job-card__stats">
+    <div>
+      <span>Start</span>
+      <strong>{{ job().planStartDate }}</strong>
+    </div>
+
+    <div>
+      <span>Days</span>
+      <strong>{{ job().daysPlanned }}</strong>
+    </div>
+
+    <div>
+      <span>Complete</span>
+      <strong>{{ job().percentComplete }}%</strong>
+    </div>
+  </div>
+
+  <div class="job-card__progress">
+    <div
+      class="job-card__progress-bar"
+      [style.width.%]="job().percentComplete"
+    ></div>
+  </div>
+
+  <button
+    class="job-card__button"
+    type="button"
+    (click)="viewDetails.emit(job().jobId)"
+  >
+    View Details
+  </button>
+</article>

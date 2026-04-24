@@ -1,0 +1,39 @@
+<div class="filter-bar">
+  <div class="filter-bar__group">
+    <label>Region</label>
+    <select
+      class="filter-bar__select"
+      [value]="selectedRegion() ?? ''"
+      (change)="onRegionChange($any($event.target).value)"
+    >
+      <option value="">All Regions</option>
+
+      @for (region of regions(); track region) {
+        <option [value]="region">{{ region }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-bar__group">
+    <label>Status</label>
+    <select
+      class="filter-bar__select"
+      [value]="selectedStatus() ?? ''"
+      (change)="onStatusChange($any($event.target).value)"
+    >
+      <option value="">All Statuses</option>
+
+      @for (status of statuses(); track status) {
+        <option [value]="status">{{ status }}</option>
+      }
+    </select>
+  </div>
+
+  <button
+    class="filter-bar__clear"
+    type="button"
+    (click)="filtersCleared.emit()"
+  >
+    Clear Filters
+  </button>
+</div>

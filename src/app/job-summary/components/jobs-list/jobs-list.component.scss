@@ -1,0 +1,61 @@
+.jobs-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #172b4d;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 15px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+/* Make cards fill grid cells nicely */
+app-job-card {
+  height: 100%;
+}
+
+/* Responsive behavior */
+@media (max-width: 1100px) {
+  .jobs-list__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .jobs-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .jobs-list__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jobs-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,59 @@
+.job-detail {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 16px;
+  text-align: center;
+}
+
+.job-detail__back {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #2563eb;
+}
+
+.job-detail__card {
+  padding: 24px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.06),
+    0 8px 16px rgba(0,0,0,0.06);
+}
+
+.job-detail__card h1 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.job-detail__info {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.job-detail__info p {
+  font-size: 16px;
+}
+
+.job-detail__progress {
+  margin-top: 20px;
+  height: 10px;
+  background: #ebecf0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.job-detail__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+
+.job-detail__error {
+  padding: 12px;
+  border-radius: 6px;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+}

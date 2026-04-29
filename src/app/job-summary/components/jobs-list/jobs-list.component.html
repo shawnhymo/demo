@@ -23,7 +23,7 @@
           Retry
         </button>
       </div>
-    } @else if (stateService.filteredJobs().length === 0) {
+    } @else if (!stateService.loading() && stateService.jobs().length > 0 && stateService.filteredJobs().length === 0) {
       <p>No jobs found.</p>
     } @else {
       <div class="jobs-list__grid">

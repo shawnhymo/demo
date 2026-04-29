@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { catchError, finalize, map, of, switchMap, tap } from 'rxjs';
+import { catchError, delay, finalize, map, of, switchMap, tap } from 'rxjs';
 
 import { JobSummaryDataService } from '../job-summary.data.service';
 import { JobSummaryDataModel } from '../models/job-summary.data.model';
@@ -33,6 +33,7 @@ export class JobStateService {
 
   readonly jobs = toSignal(
     toObservable(this.reloadCount).pipe(
+      delay(400),
       tap(() => {
         this.busy.set(true);
         this.loadError.set(null);
